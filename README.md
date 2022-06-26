@@ -68,3 +68,23 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+# Tag and push an image to ECR
+
+## Authenticate your Docker client to the Amazon ECR registry
+`docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) 580213590443.dkr.ecr.us-east-1.amazonaws.com`
+or
+`aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 580213590443.dkr.ecr.us-east-1.amazonaws.com`
+
+## Tag image locally (run from root of the application)
+`docker build -t cicd-frontend:1.0 .`
+
+## Tag your image with the Amazon ECR registry
+`docker tag cicd-frontend:1.0 580213590443.dkr.ecr.us-east-1.amazonaws.com/cicd-frontend:1.0`
+
+## Push the image
+`docker push 580213590443.dkr.ecr.us-east-1.amazonaws.com/cicd-frontend:1.0`
+
+## Run the image
+`docker run -p 3000:3000 580213590443.dkr.ecr.us-east-1.amazonaws.com/cicd-frontend:1.0`

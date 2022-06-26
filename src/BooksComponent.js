@@ -6,17 +6,36 @@ const baseURL = "/book/list";
 export default function BooksComponent() {
   const [book, setPost] = React.useState([]);
 
-  React.useEffect(() => {
-    axios.get(baseURL).then((response) => {
-      setPost(response.data);
+  function addBooks(e) {
+    e.preventDefault();
+   axios.get("/mockbook/generatedummybook").then((response) => {
+      getData();
     });
+  }
+
+function getData(){
+  axios.get(baseURL).then((response) => {
+    setPost(response.data);
+  });
+}
+  React.useEffect(() => {
+    getData();
   }, []);
 
     return (
       <div>
         <ul>
-            {book.map(book => <li key={book.name}>{book.name} | ${book.price}</li>)}
-        </ul>
+        {book.map(book => {
+          return (
+            <li key={book.id}> name: {book.name} country: {book.price}
+              <hr />
+            </li>
+          );
+        })}
+      </ul>
+      <button onClick={addBooks}>
+        Add books
+      </button>
     </div>
     )
   }
