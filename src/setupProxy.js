@@ -1,10 +1,11 @@
+import {API_BASE} from "./env";
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function(app) {
   app.use(
-    'api/',
+    "/book/list/",
     createProxyMiddleware({
-      target: 'http://cicd-backend-backend-app.backend.svc.cluster.local:8080/',
+      target: `${API_BASE}`,
       changeOrigin: true,
     })
   );

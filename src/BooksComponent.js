@@ -2,6 +2,12 @@ import React from 'react'
 import axios from "axios";
 
 const baseURL = "/book/list";
+const headers = {
+  'Content-Type': 'application/json;charset=UTF-8',
+  "Access-Control-Allow-Origin": "*",
+  Accept: "application/json"
+}
+
 
 export default function BooksComponent() {
   const [book, setPost] = React.useState([]);
@@ -14,7 +20,7 @@ export default function BooksComponent() {
   }
 
 function getData(){
-  axios.get(baseURL).then((response) => {
+  axios.get(baseURL, { 'headers': headers}).then((response) => {
     setPost(response.data);
   });
 }
