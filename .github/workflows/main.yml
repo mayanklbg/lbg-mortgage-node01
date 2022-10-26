@@ -1,0 +1,45 @@
+name: Platform-Workspace
+on:
+   push:
+    branches:
+      - master
+      
+env:
+  name: Platform-Workspace
+  GOOGLE_APPLICATION_CREDENTIALS: '${{ secrets.GKE_SHARED_SECRET }}'
+  PROJECT_ID: "shared-svc1-project"
+  CLUSTER_NAME: "pde-gke"
+  ZONE: "europe-west1"
+  CLUSTER_IP: 35.189.222.183
+  USER_GKE_GSA: shared-test-sa@shared-svc1-project.iam.gserviceaccount.com
+jobs:
+  build:
+    runs-on: my-custom-runner
+    steps:
+    - id: 'auth'
+      name: 'Authenticate to Google Cloud'
+      run: sleep 20s
+      
+  build2:
+    runs-on: my-custom-runner
+    steps:
+    - id: 'auth2'
+      uses: actions/checkout@v3
+
+  build3:
+    runs-on: my-custom-runner
+    steps:
+    - id: 'auth2'
+      uses: actions/checkout@v3
+
+  build4:
+    runs-on: my-custom-runner
+    steps:
+    - id: 'auth2'
+      uses: actions/checkout@v3
+    
+  build5:
+    runs-on: my-custom-runner
+    steps:
+    - id: 'auth2'
+      uses: actions/checkout@v3
