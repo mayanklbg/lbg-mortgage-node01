@@ -6,32 +6,32 @@ on:
       
 jobs:
   build:
-    runs-on: my-custom-runner-node01
+    runs-on: gh-action-runners
     steps:
     - id: 'auth'
       name: 'Authenticate to Google Cloud'
       uses: actions/checkout@v3
       
   build2:
-    runs-on: my-custom-runner-node01
+    runs-on: gh-action-runners
     steps:
     - id: 'auth2'
       uses: actions/checkout@v3
 
   build3:
-    runs-on: my-custom-runner-node01
+    runs-on: gh-action-runners
     steps:
     - id: 'auth2'
       uses: actions/checkout@v3
 
   build4:
-    runs-on: my-custom-runner-node01
+    runs-on: gh-action-runners
     steps:
     - id: 'auth2'
       uses: actions/checkout@v3
     
   build5:
-    runs-on: my-custom-runner-node01
+    runs-on: gh-action-runners
     steps:
     - id: 'auth2'
       uses: actions/checkout@v3
